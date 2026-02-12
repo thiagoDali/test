@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cita de San Valentín?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        img {
+            max-width: 300px; /* Ajusta el tamaño de las imágenes */
+            height: auto;
+            border-radius: 20px; /* Bordes redondeados para que sea cute */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 10px; /* Espacio entre imágenes */
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Para que se ajusten en móviles */
+            gap: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        #yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        #no:hover {
+            background-color: #d32f2f;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 2em;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+        #confirmation {
+            font-size: 1.5em;
+            color: #e91e63;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts">
+        <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+        <div class="heart" style="left: 20%; animation-delay: 1s;">💖</div>
+        <div class="heart" style="left: 30%; animation-delay: 2s;">💕</div>
+        <div class="heart" style="left: 40%; animation-delay: 0.5s;">❤️</div>
+        <div class="heart" style="left: 50%; animation-delay: 1.5s;">💖</div>
+        <div class="heart" style="left: 60%; animation-delay: 2.5s;">💕</div>
+        <div class="heart" style="left: 70%; animation-delay: 1s;">❤️</div>
+        <div class="heart" style="left: 80%; animation-delay: 0.5s;">💖</div>
+        <div class="heart" style="left: 90%; animation-delay: 2s;">💕</div>
+    </div>
+
+    <div id="main">
+        <h1>¿Quieres ser mi cita de San Valentín, mi torazón? 💕</h1>
+        <!-- Foto principal -->
+        <img src="foto1.jpeg" alt="Foto romántica 1">
+        <p>Elige con el corazón... pero solo hay una opción real 😉</p>
+        <div class="buttons">
+            <button id="yes">Sí ❤️</button>
+            <button id="no">No 😢</button>
+        </div>
+    </div>
+
+    <div id="confirmation" class="hidden">
+        <h2>¡Gracias torazón! 💖</h2>
+        <p>El 14 de febrero la pasaremos nonito. ¡Será un día inolvidable! Te amo. 😘</p>
+        <!-- Galería de fotos adicionales -->
+        <div class="gallery">
+            <img src="foto2.jpeg" alt="Foto romántica 2">
+            <img src="foto3.jpeg" alt="Foto romántica 3">
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const main = document.getElementById('main');
+        const confirmation = document.getElementById('confirmation');
+
+        // Función para mover el botón "No" aleatoriamente
+        noButton.addEventListener('mouseenter', () => {
+            const randomX = Math.random() * (window.innerWidth - 200);
+            const randomY = Math.random() * (window.innerHeight - 100);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        });
+
+        // Al hacer clic en "Sí", mostrar confirmación
+        yesButton.addEventListener('click', () => {
+            main.classList.add('hidden');
+            confirmation.classList.remove('hidden');
+        });
+
+        // Evitar que se haga clic en "No" (opcional, pero refuerza el truco)
+        noButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('¡No puedes elegir eso! Solo Sí es válido. 😜');
+        });
+    </script>
+</body>
+</html>
