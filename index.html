@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Esto ya está, es clave para móviles -->
     <title>¿Cita de San Valentín?</title>
     <style>
         body {
@@ -24,16 +24,16 @@
             margin-bottom: 40px;
         }
         img {
-            max-width: 300px; /* Ajusta el tamaño de las imágenes */
+            max-width: 300px; /* Tamaño base para computadoras */
             height: auto;
-            border-radius: 20px; /* Bordes redondeados para que sea cute */
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin: 10px; /* Espacio entre imágenes */
+            margin: 10px;
         }
         .gallery {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Para que se ajusten en móviles */
+            flex-wrap: wrap;
             gap: 10px;
         }
         .buttons {
@@ -92,6 +92,40 @@
             font-size: 1.5em;
             color: #e91e63;
             margin-top: 50px;
+        }
+
+        /* Ajustes para móviles (pantallas menores a 768px) */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px; /* Menos padding para móviles */
+            }
+            h1 {
+                font-size: 2em; /* Título más pequeño */
+            }
+            p {
+                font-size: 1.1em; /* Texto más pequeño */
+            }
+            img {
+                max-width: 250px; /* Imágenes más pequeñas */
+            }
+            .gallery {
+                flex-direction: column; /* Fotos apiladas verticalmente */
+                align-items: center;
+            }
+            button {
+                padding: 12px 25px; /* Botones más pequeños */
+                font-size: 1.1em;
+            }
+            .buttons {
+                flex-direction: column; /* Botones apilados si es necesario */
+                gap: 15px;
+            }
+            .heart {
+                font-size: 1.5em; /* Corazones más pequeños */
+            }
+            #confirmation {
+                font-size: 1.3em; /* Texto de confirmación más pequeño */
+            }
         }
     </style>
 </head>
